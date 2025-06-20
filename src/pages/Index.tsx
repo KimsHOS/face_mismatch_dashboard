@@ -60,22 +60,38 @@ const Index = () => {
     setError('');
 
     try {
-       const response = await fetch('http://emrisvsschedularint.emri.in/face_mismatch/records', {
-      //const response = await fetch('http://172.16.18.149:3003/api/records_new', {
-        method: 'POST',
-        headers: { 
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*'
-        },
-        body: JSON.stringify({
-          status: filters.status || 'MISMATCHED',
-          state: filters.state,
-          date: filters.date,
-          confidanceScore: parseFloat(filters.confidenceScore.toString()),
-          page: reset ? 1 : page,
-          limit: 20
-        })
-      });
+      const response = await fetch('/face_mismatch', {
+  method: 'POST',
+  headers: { 
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*' // Note: This header is not needed for client-side fetch
+  },
+  body: JSON.stringify({
+    status: filters.status || 'MISMATCHED',
+    state: filters.state,
+    date: filters.date,
+    confidanceScore: parseFloat(filters.confidenceScore.toString()),
+    page: reset ? 1 : page,
+    limit: 20
+  })
+});
+// try {
+//        const response = await fetch('http://emrisvsschedularint.emri.in/face_mismatch/records', {
+//       //const response = await fetch('http://172.16.18.149:3003/api/records_new', {
+//         method: 'POST',
+//         headers: { 
+//           'Content-Type': 'application/json',
+//           'Access-Control-Allow-Origin': '*'
+//         },
+//         body: JSON.stringify({
+//           status: filters.status || 'MISMATCHED',
+//           state: filters.state,
+//           date: filters.date,
+//           confidanceScore: parseFloat(filters.confidenceScore.toString()),
+//           page: reset ? 1 : page,
+//           limit: 20
+//         })
+//       });
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
