@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/face_mismatch",
+      "destination": "/api/face_mismatch"
+    }
+  ]
+}
