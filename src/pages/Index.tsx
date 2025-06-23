@@ -64,7 +64,7 @@ const Index = () => {
   
 
     try {
-      const response = await fetch('/face_mismatch', {
+      const response = await fetch('http://emrisvsschedularint.emri.in/face_mismatch/records', {
   method: 'POST',
   headers: { 
     'Content-Type': 'application/json',
